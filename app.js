@@ -236,9 +236,21 @@ function renderChart() {
 
 function renderHistory() {
   const list = document.getElementById("historyList");
-  const dates = getRecentDates(14).reverse();
+
+  const dates = Object.keys(data.days)
+    .filter(date => {
+      const day = data.days[date];
+      return totalForDay(date) > 0 || day.otherStrength || day.notes;
+    })
+    .sort()
+    .reverse();
 
   list.innerHTML = "";
+
+  if (dates.length === 0) {
+    list.innerHTML = `<p class="muted">No history yet. Your logged days will appear here.</p>`;
+    return;
+  }
 
   dates.forEach(date => {
     const day = data.days[date];
