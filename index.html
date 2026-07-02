@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111827" />
+  <title>Squat Tracker</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Daily Movement</p>
+        <h1>Squat Tracker</h1>
+      </div>
+    </header>
+
+    <main>
+      <section class="card hero">
+        <p id="todayDate" class="muted"></p>
+        <div class="big-number"><span id="todayTotal">0</span></div>
+        <p class="label">squats today</p>
+
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span>Daily goal</span>
+            <span id="dailyGoalLabel">0/50</span>
+          </div>
+          <div class="progress">
+            <div id="dailyProgress" class="progress-bar"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Add squats</h2>
+        <div class="quick-grid" id="quickButtons"></div>
+        <button id="customBtn" class="primary full">Add custom set</button>
+        <div class="button-row">
+          <button id="repeatBtn" class="secondary">Repeat last set</button>
+          <button id="undoBtn" class="secondary">Undo last entry</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Other strength training</h2>
+        <p class="muted small">Track planks, glute bridges, deadlifts, lunges, or other in-home strength work.</p>
+
+        <div class="toggle-row">
+          <button id="otherYesBtn" class="toggle-btn">Yes</button>
+          <button id="otherNoBtn" class="toggle-btn">No</button>
+        </div>
+
+        <div id="otherExerciseDetails" class="hidden">
+          <p class="field-label">Select exercises</p>
+          <div id="exerciseChips" class="chip-grid"></div>
+
+          <label class="notes-label">
+            Notes
+            <textarea id="exerciseNotes" rows="3" placeholder="e.g., 2 x 30-sec planks, 3 sets glute bridges"></textarea>
+          </label>
+
+          <button id="saveExercisesBtn" class="secondary full">Save strength notes</button>
+        </div>
+
+        <p id="otherExerciseSummary" class="muted small"></p>
+      </section>
+
+      <section class="stats-grid">
+        <div class="stat card"><span id="streak">0</span><small>day streak</small></div>
+        <div class="stat card"><span id="weekTotal">0</span><small>this week</small></div>
+        <div class="stat card"><span id="monthTotal">0</span><small>this month</small></div>
+        <div class="stat card"><span id="bestDay">0</span><small>best day</small></div>
+      </section>
+
+      <section class="card">
+        <h2>Trends</h2>
+        <div id="dailyChart" class="chart"></div>
+      </section>
+
+      <section class="card">
+        <h2>Goals</h2>
+        <label>
+          Daily goal
+          <input id="dailyGoalInput" type="number" min="1" />
+        </label>
+        <label>
+          Weekly goal
+          <input id="weeklyGoalInput" type="number" min="1" />
+        </label>
+        <label>
+          Monthly goal
+          <input id="monthlyGoalInput" type="number" min="1" />
+        </label>
+        <button id="saveGoalsBtn" class="primary full">Save goals</button>
+      </section>
+
+      <section class="card">
+        <h2>History</h2>
+        <div id="historyList"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="customDialog">
+    <h2>Add custom set</h2>
+    <select id="customSelect"></select>
+    <div class="button-row">
+      <button id="cancelCustomBtn" class="secondary">Cancel</button>
+      <button id="addCustomBtn" class="primary">Add</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
